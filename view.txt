@@ -1,0 +1,210 @@
+Page	                                                Layout (data-include)	                Sections	                        Templates
+index.html (promotion) -> 2(For you, catagory)	        header, category-nav,                   footer	                            banner-carousel	product-card, deal-card
+Category.html (promotion)                               header                                  footer                              category template
+products.html	                                        header, footer	                        filter-sidebar, sort-bar	        product-card
+product.html	                                        header, footer	                        —	                                review-item(product detail => )
+cart.html	                                            header, footer	                        price-details	                    cart-item
+
+
+
+<!-- Promotion Banner -->
+<section class="w-full px-3 sm:px-5 py-3">
+
+    <div class="w-full max-w-screen-2xl mx-auto overflow-hidden">
+
+        <div class="w-full rounded-xl overflow-hidden">
+
+            <img
+                src="images/yoga-bar-banner.png"
+                alt="Yoga Bar Protein Wafer Promotion"
+                class="block w-full h-auto object-contain"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="w-full space-y-7">
+
+    <!-- Category Shortcuts -->
+    <section class="relative">
+
+        <div class="flex gap-5 sm:gap-8 overflow-x-auto scrollbar-hide py-3 px-1">
+
+            <a href="#" class="flex-none w-16 text-center">
+                <img src="assets/categories/credit-card.webp" class="w-14 h-14 mx-auto object-contain">
+                <p class="text-xs font-medium mt-2 truncate">Credit Card</p>
+            </a>
+
+            <a href="#" class="flex-none w-16 text-center">
+                <img src="assets/categories/flipkart-plus.webp" class="w-14 h-14 mx-auto object-contain">
+                <p class="text-xs font-medium mt-2 truncate">Flipkart Plus</p>
+            </a>
+
+            <a href="#" class="flex-none w-16 text-center">
+                <img src="assets/categories/pay-later.webp" class="w-14 h-14 mx-auto object-contain">
+                <p class="text-xs font-medium mt-2 truncate">Pay Later</p>
+            </a>
+
+            <a href="#" class="flex-none w-16 text-center">
+                <img src="assets/categories/loans.webp" class="w-14 h-14 mx-auto object-contain">
+                <p class="text-xs font-medium mt-2 truncate">Loans</p>
+            </a>
+
+            <a href="#" class="flex-none w-16 text-center">
+                <img src="assets/categories/gift-cards.webp" class="w-14 h-14 mx-auto object-contain">
+                <p class="text-xs font-medium mt-2 truncate">Gift Cards</p>
+            </a>
+
+            <a href="#" class="flex-none w-16 text-center">
+                <img src="assets/categories/sell-phone.webp" class="w-14 h-14 mx-auto object-contain">
+                <p class="text-xs font-medium mt-2 truncate">Sell Phone</p>
+            </a>
+
+            <a href="#" class="flex-none w-16 text-center">
+                <img src="assets/categories/supercoin.webp" class="w-14 h-14 mx-auto object-contain">
+                <p class="text-xs font-medium mt-2 truncate">SuperCoin</p>
+            </a>
+
+            <a href="#" class="flex-none w-16 text-center">
+                <img src="assets/categories/black.webp" class="w-14 h-14 mx-auto object-contain">
+                <p class="text-xs font-medium mt-2 truncate">BLACK</p>
+            </a>
+
+            <a href="#" class="flex-none w-16 text-center">
+                <img src="assets/categories/pay.webp" class="w-14 h-14 mx-auto object-contain">
+                <p class="text-xs font-medium mt-2 truncate">Pay</p>
+            </a>
+
+            <a href="#" class="flex-none w-16 text-center">
+                <img src="assets/categories/genz.webp" class="w-14 h-14 mx-auto object-contain">
+                <p class="text-xs font-medium mt-2 truncate">For GenZ</p>
+            </a>
+
+            <a href="#" class="flex-none w-16 text-center">
+                <img src="assets/categories/originals.webp" class="w-14 h-14 mx-auto object-contain">
+                <p class="text-xs font-medium mt-2 truncate">Originals</p>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Featured Brands -->
+    <section class="space-y-3">
+
+        <h2 class="text-xl sm:text-2xl font-bold">
+            Featured Brands
+        </h2>
+
+        <div class="flex gap-3 sm:gap-6 overflow-x-auto scrollbar-hide">
+
+            <a href="#" class="flex-none w-[220px] sm:w-[235px]">
+                <div class="aspect-[2.1/1] rounded-2xl overflow-hidden">
+                    <img src="assets/featured/brand1.webp" class="w-full h-full object-cover">
+                </div>
+                <p class="bg-yellow-200 text-xs font-bold px-2 py-1">
+                    Up to 20% Off
+                </p>
+            </a>
+
+            <a href="#" class="flex-none w-[220px] sm:w-[235px]">
+                <div class="aspect-[2.1/1] rounded-2xl overflow-hidden">
+                    <img src="assets/featured/brand2.webp" class="w-full h-full object-cover">
+                </div>
+                <p class="bg-yellow-200 text-xs font-bold px-2 py-1">
+                    Up to 30% Off
+                </p>
+            </a>
+
+            <a href="#" class="flex-none w-[220px] sm:w-[235px]">
+                <div class="aspect-[2.1/1] rounded-2xl overflow-hidden">
+                    <img src="assets/featured/brand3.webp" class="w-full h-full object-cover">
+                </div>
+                <p class="bg-yellow-200 text-xs font-bold px-2 py-1">
+                    Up to 15% Off
+                </p>
+            </a>
+
+            <a href="#" class="flex-none w-[220px] sm:w-[235px]">
+                <div class="aspect-[2.1/1] rounded-2xl overflow-hidden">
+                    <img src="assets/featured/brand4.webp" class="w-full h-full object-cover">
+                </div>
+                <p class="bg-yellow-200 text-xs font-bold px-2 py-1">
+                    Min. 10% Off
+                </p>
+            </a>
+
+            <a href="#" class="flex-none w-[220px] sm:w-[235px]">
+                <div class="aspect-[2.1/1] rounded-2xl overflow-hidden">
+                    <img src="assets/featured/brand5.webp" class="w-full h-full object-cover">
+                </div>
+                <p class="bg-yellow-200 text-xs font-bold px-2 py-1">
+                    Up to 60% Off
+                </p>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Promotional Carousel -->
+    <section class="relative">
+
+        <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide">
+
+            <a href="#" class="flex-none w-[85%] md:w-[40%] snap-start">
+                <img src="assets/featured/promo1.webp" class="w-full aspect-[2.1/1] object-cover rounded-2xl">
+            </a>
+
+            <a href="#" class="flex-none w-[85%] md:w-[40%] snap-start">
+                <img src="assets/featured/promo2.webp" class="w-full aspect-[2.1/1] object-cover rounded-2xl">
+            </a>
+
+            <a href="#" class="flex-none w-[85%] md:w-[40%] snap-start">
+                <img src="assets/featured/promo3.webp" class="w-full aspect-[2.1/1] object-cover rounded-2xl">
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Ace Brands -->
+    <section class="space-y-3">
+
+        <h2 class="text-xl sm:text-2xl font-bold">
+            Ace Brands
+        </h2>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-5">
+
+            <a href="#" class="overflow-hidden rounded-xl">
+                <img src="assets/featured/ace1.webp" class="w-full h-auto object-cover">
+            </a>
+
+            <a href="#" class="overflow-hidden rounded-xl">
+                <img src="assets/featured/ace2.webp" class="w-full h-auto object-cover">
+            </a>
+
+            <a href="#" class="overflow-hidden rounded-xl">
+                <img src="assets/featured/ace3.webp" class="w-full h-auto object-cover">
+            </a>
+
+            <a href="#" class="overflow-hidden rounded-xl">
+                <img src="assets/featured/ace4.webp" class="w-full h-auto object-cover">
+            </a>
+
+            <a href="#" class="overflow-hidden rounded-xl">
+                <img src="assets/featured/ace5.webp" class="w-full h-auto object-cover">
+            </a>
+
+        </div>
+
+    </section>
+
+</div>

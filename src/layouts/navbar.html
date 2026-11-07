@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive Flipkart Header</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Flowbite -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- SECOND SECTION: Search, Login, More and Cart -->
+    <div class="flex flex-col gap-4 py-3 sm:flex-row sm:items-center">
+
+        <!-- Search Input -->
+        <div class="relative w-full min-w-0 sm:flex-1">
+
+            <i data-lucide="search" class="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500">
+            </i>
+
+            <input type="text" placeholder="Search for Products, Brands and More."
+                class="w-full rounded-lg border border-gray-300 bg-white py-3 pl-11 pr-4 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+
+        </div>
+
+
+        <!-- Navigation Actions -->
+        <div class="flex items-center justify-between gap-4 sm:justify-end sm:gap-6">
+
+            <!-- Login -->
+            <a href="#" class="flex items-center gap-2 whitespace-nowrap text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                <span>Login</span>
+                <i data-lucide="chevron-down" class="h-4 w-4"></i>
+            </a>
+
+            <!-- More -->
+            <a href="#" class="flex items-center gap-1 whitespace-nowrap text-sm">
+                <span>More</span>
+                <i data-lucide="chevron-down" class="h-4 w-4"></i>
+            </a>
+
+            <!-- Cart -->
+            <a href="#" class="flex items-center gap-2 whitespace-nowrap text-sm">
+                <!-- <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4">3</span> -->
+                <i data-lucide="shopping-cart" class="h-5 w-5"></i>
+
+                <span>Cart</span>
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Initialize Icons -->
+    <!-- <script>
+        lucide.createIcons();</script> -->
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+
+
+</body>
+
+</html>

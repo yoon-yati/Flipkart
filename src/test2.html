@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive Flipkart Header</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Flowbite -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+
+</head>
+
+<body class="bg-gray-100">
+
+    <header class="w-full bg-white">
+
+        <div class="mx-auto w-full max-w-screen-2xl px-3 sm:px-6 lg:px-10">
+
+            <!-- FIRST SECTION: Logo and Delivery -->
+            <div class="flex flex-col gap-3 py-3 sm:flex-row sm:items-center sm:justify-between">
+
+                <!-- Logos -->
+                <div class="flex justify-center items-center gap-3 sm:gap-5">
+
+                    <div class="flex items-center gap-2 rounded-xl bg-[#ffe51e] px-4 py-3">
+                        <img src="https://rukminim1.flixcart.com/fk-p-flap/26/22/image/d2ecfddf891a3922.png?q=80"
+                            class="h-5 w-6 object-contain" alt="Logo">
+
+                        <img src="https://rukminim1.flixcart.com/fk-p-flap/92/36/image/31f7e3af490c225f.png?q=90"
+                            class="h-4 w-12 object-contain" alt="Flipkart">
+                    </div>
+
+                    <div class="flex items-center gap-2 rounded-xl bg-gray-100 px-4 py-3">
+                        <img src="https://rukminim1.flixcart.com/fk-p-flap/58/44/image/7ab4040af860941d.png?q=80"
+                            class="h-5 w-6 object-contain" alt="Travel">
+
+                        <span class="text-sm font-medium">Travel</span>
+                    </div>
+
+                </div>
+
+                <!-- Delivery Location -->
+                <div class="flex flex-wrap items-center gap-2 text-sm">
+
+                    <div class="flex items-center gap-1 text-gray-600">
+                        <i data-lucide="map-pin" class="h-5 w-5"></i>
+                        <span>Location not set</span>
+                    </div>
+
+                    <a href="#" class="font-medium text-blue-600">
+                        Select Delivery Location &gt;
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SECOND SECTION: Search, Login, More and Cart -->
+            <div class="flex flex-col gap-4 py-3 sm:flex-row sm:items-center">
+
+                <!-- Search Input -->
+                <div class="relative w-full min-w-0 sm:flex-1">
+
+                    <i data-lucide="search" class="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500">
+                    </i>
+
+                    <input type="text" placeholder="Search for Products, Brands and More."
+                        class="w-full rounded-lg border border-gray-300 bg-white py-3 pl-11 pr-4 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+
+                </div>
+
+
+                <!-- Navigation Actions -->
+                <div class="flex items-center justify-between gap-4 sm:justify-end sm:gap-6">
+
+                    <!-- Login -->
+                    <a href="#" class="flex items-center gap-2 whitespace-nowrap text-sm">
+                        <i data-lucide="user-round" class="h-5 w-5"></i>
+                        <span>Login</span>
+                        <i data-lucide="chevron-down" class="h-4 w-4"></i>
+                    </a>
+
+                    <!-- More -->
+                    <a href="#" class="flex items-center gap-1 whitespace-nowrap text-sm">
+                        <span>More</span>
+                        <i data-lucide="chevron-down" class="h-4 w-4"></i>
+                    </a>
+
+                    <!-- Cart -->
+                    <a href="#" class="flex items-center gap-2 whitespace-nowrap text-sm">
+                        <i data-lucide="shopping-cart" class="h-5 w-5"></i>
+                        <span>Cart</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- THIRD SECTION: Category Navigation -->
+            <nav class="w-full border-y border-gray-200">
+
+                <div class="flex items-start gap-2 overflow-x-auto py-3 sm:gap-4 lg:justify-between lg:gap-2">
+
+                    <!-- For You -->
+                    <a href="#" class="category-item">
+                        <i data-lucide="shopping-bag" class="category-icon"></i>
+                        <span>For You</span>
+                    </a>
+
+                    <!-- Fashion -->
+                    <a href="#" class="category-item">
+                        <i data-lucide="shirt" class="category-icon"></i>
+                        <span>Fashion</span>
+                    </a>
+
+                    <!-- Mobiles -->
+                    <a href="#" class="category-item">
+                        <i data-lucide="smartphone" class="category-icon"></i>
+                        <span>Mobiles</span>
+                    </a>
+
+                    <!-- Electronics -->
+                    <a href="#" class="category-item active">
+                        <i data-lucide="monitor" class="category-icon"></i>
+                        <span>Electronics</span>
+                    </a>
+
+                    <!-- Beauty -->
+                    <a href="#" class="category-item">
+                        <i data-lucide="paintbrush" class="category-icon"></i>
+                        <span>Beauty</span>
+                    </a>
+
+                    <!-- Home -->
+                    <a href="#" class="category-item">
+                        <i data-lucide="lamp" class="category-icon"></i>
+                        <span>Home</span>
+                    </a>
+
+                    <!-- Appliances -->
+                    <a href="#" class="category-item">
+                        <i data-lucide="tv" class="category-icon"></i>
+                        <span>Appliances</span>
+                    </a>
+
+                    <!-- Toys -->
+                    <a href="#" class="category-item">
+                        <i data-lucide="baby" class="category-icon"></i>
+                        <span>Toys, Baby</span>
+                    </a>
+
+                    <!-- Food -->
+                    <a href="#" class="category-item">
+                        <i data-lucide="utensils" class="category-icon"></i>
+                        <span>Food & Health</span>
+                    </a>
+
+                    <!-- Auto -->
+                    <a href="#" class="category-item">
+                        <i data-lucide="car" class="category-icon"></i>
+                        <span>Auto Accessories</span>
+                    </a>
+
+                    <!-- Sports -->
+                    <a href="#" class="category-item">
+                        <i data-lucide="dumbbell" class="category-icon"></i>
+                        <span>Sports & Fitness</span>
+                    </a>
+
+                    <!-- Furniture -->
+                    <a href="#" class="category-item">
+                        <i data-lucide="armchair" class="category-icon"></i>
+                        <span>Furniture</span>
+                    </a>
+
+                    <!-- Books -->
+                    <a href="#" class="category-item">
+                        <i data-lucide="book" class="category-icon"></i>
+                        <span>Books</span>
+                    </a>
+
+                    <!-- Two Wheelers -->
+                    <a href="#" class="category-item">
+                        <i data-lucide="bike" class="category-icon"></i>
+                        <span>2 Wheelers</span>
+                    </a>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- Demo Content -->
+    <main class="mx-auto max-w-screen-2xl p-5">
+        <h1 class="text-xl font-bold text-gray-800">
+            Welcome to Flipkart
+        </h1>
+    </main>
+
+
+    <!-- Category Styles -->
+    <style>
+        .category-item {
+            display: flex;
+            min-width: 72px;
+            flex-shrink: 0;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 4px 3px;
+            color: #111827;
+            font-size: 14px;
+            white-space: nowrap;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .category-icon {
+            width: 36px;
+            height: 36px;
+            padding: 7px;
+            border-radius: 8px;
+            stroke-width: 1.5;
+        }
+
+        .category-item.active .category-icon {
+            background-color: #dbeafe;
+        }
+
+        .category-item.active {
+            font-weight: 700;
+        }
+
+        .category-item:hover {
+            color: #2563eb;
+        }
+
+        /* Hide scrollbar but keep scrolling */
+        nav div::-webkit-scrollbar {
+            display: none;
+        }
+
+        nav div {
+            scrollbar-width: none;
+        }
+    </style>
+
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();</script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+
+
+</body>
+
+</html>
