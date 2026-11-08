@@ -4,12 +4,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For you Products</title>
+    <title>Product Details | Flipkart Style</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .thumb.active {
+            border: 2px solid #2874f0;
+        }
+
+        .gallery-main {
+            background: #f1f3f6;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            scrollbar-width: none;
+        }
+
+        .size-btn.selected {
+            border: 2px solid #2874f0;
+            color: #2874f0;
+            background: #eff6ff;
+        }
+
+        .color-btn.selected {
+            outline: 2px solid #2874f0;
+            outline-offset: 3px;
+        }
+
+        .sticky-buy {
+            position: sticky;
+            bottom: 0;
+        }
+    </style>
 </head>
 
-<body>
+<body class="bg-[#f1f3f6] text-[#212121]">
+    <!-- Header -->
+    <header class="sticky top-0 z-40 border-b bg-white">
+        <div class="mx-auto flex max-w-[1400px] items-center gap-5 px-4 py-3">
+            <a href="#"
+                class="flex shrink-0 items-center gap-2 rounded-xl bg-yellow-300 px-5 py-3 font-bold italic text-blue-700">
+                <span class="text-xl">f</span> Flipkart <span class="text-xs not-italic">⌄</span>
+            </a>
+            <div class="flex flex-1 items-center rounded-xl border-2 border-blue-500 px-4">
+                <span class="text-xl text-slate-500">⌕</span>
+                <input id="searchBox" class="h-10 w-full px-3 outline-none"
+                    placeholder="Search for Products, Brands and More">
+            </div>
+            <button class="hidden items-center gap-2 px-2 sm:flex">◉ Login⌄</button>
+            <button class="hidden px-2 sm:block">More⌄</button>
+            <button class="whitespace-nowrap px-2">🛒 Cart <span id="cartCount"
+                    class="rounded-full bg-red-500 px-1.5 text-xs text-white">0</span></button>
+        </div>
+    </header>
 
+    <main class="mx-auto max-w-[1280px] bg-white px-4 pb-8">
+        <nav class="overflow-x-auto whitespace-nowrap py-4 text-sm text-slate-500 no-scrollbar">
+            Home / Footwear / Men's Footwear / Men's Sports Shoes / <span id="breadcrumbName"
+                class="text-slate-700"></span>
+        </nav>
 
+        <div class="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.45fr)_minmax(420px,1fr)]">
+            <!-- Image gallery -->
+            <section class="min-w-0">
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+                    <div id="galleryLeft" class="grid gap-3"></div>
+                    <div id="galleryRight" class="grid gap-3"></div>
+                </div>
+            </section>
+
+            <!-- Product information -->
+            <section class="min-w-0 lg:pl-1">
+                <div class="mb-5 rounded-lg bg-slate-100 p-2 text-sm">
+                    <div class="flex items-center gap-3">
+                        <img id="adImage" class="h-12 w-12 rounded object-cover" alt="Recommended product">
+                        <div class="min-w-0 flex-1">
+                            <p class="truncate text-slate-700">NOBELITE Premium Sports, Gym, Trending, Stylish Running
+                                Shoes</p>
+                            <p class="text-xs font-semibold text-green-700">↓80% <span
+                                    class="text-slate-500 line-through">₹2,499</span> ₹489</p>
+                        </div>
+                        <span class="rounded bg-slate-300 px-2 py-1 text-xs text-white">AD</span>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <div class="mb-2 flex items-center justify-between">
+                        <h2 class="font-semibold">Selected Color: <span id="selectedColorText"
+                                class="font-normal"></span></h2>
+                        <button id="shareButton" class="text-xl" title="Share">♧</button>
+                    </div>
+                    <div id="colorOptions" class="flex flex-wrap gap-4"></div>
+                </div>
+
+                <div class="mb-6">
+                    <div class="mb-3 flex items-center gap-3">
+                        <h2 class="font-semibold">Select Size</h2>
+                        <button class="text-sm font-semibold text-blue-600" id="sizeChartButton">Size Chart</button>
+                    </div>
+                    <div id="sizeOptions" class="flex flex-wrap gap-2"></div>
+                    <p id="sizeError" class="mt-2 hidden text-xs text-red-600">Please select a size before adding to
+                        cart.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h1 id="productTitle" class="text-lg font-semibold leading-6"></h1>
+                    <div class="mt-3 flex items-center gap-2">
+                        <span id="rating"
+                            class="rounded-md bg-green-700 px-2 py-1 text-sm font-semibold text-white"></span>
+                        <span id="reviews" class="text-sm text-slate-500"></span>
+                        <span class="ml-auto cursor-pointer text-xl text-slate-400" id="wishlistButton"
+                            title="Add to wishlist">♡</span>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <span class="inline-block rounded bg-purple-700 px-2 py-1 text-xs font-bold text-white">Top Discount
+                        of the Sale</span>
+                    <div class="mt-2 flex flex-wrap items-center gap-2">
+                        <span id="discount" class="text-2xl font-bold text-green-700"></span>
+                        <span id="oldPrice" class="text-xl text-slate-500 line-through"></span>
+                        <span id="price" class="text-3xl font-bold"></span>
+                    </div>
+                    <p class="mt-1 text-sm font-semibold text-green-700">Inclusive of all taxes</p>
+                </div>
+
+                <div class="mb-5 overflow-hidden rounded-t-xl">
+                    <div class="flex items-center justify-between bg-blue-700 px-4 py-3 text-white">
+                        <span class="font-semibold">WOW! DEAL — Apply offers for maximum savings</span><span>⌃</span>
+                    </div>
+                    <div class="border border-t-0 p-4 text-sm">
+                        <p class="font-semibold">Bank Offer</p>
+                        <p class="mt-1 text-slate-600">Get 10% off on selected bank cards. Check eligibility at
+                            checkout.</p>
+                        <button class="mt-2 font-semibold text-blue-600">View all offers</button>
+                    </div>
+                </div>
+
+                <div class="mb-5 rounded-lg border p-4">
+                    <h3 class="mb-2 font-semibold">Delivery</h3>
+                    <div class="flex gap-2">
+                        <input id="pincode" maxlength="6" inputmode="numeric" placeholder="Enter delivery pincode"
+                            class="w-full border-b px-1 py-2 outline-none focus:border-blue-600">
+                        <button id="checkDelivery" class="font-semibold text-blue-600">Check</button>
+                    </div>
+                    <p id="deliveryMessage" class="mt-2 text-xs text-slate-500">Enter your pincode to check delivery
+                        availability.</p>
+                </div>
+
+                <div class="mb-5 grid grid-cols-2 gap-3">
+                    <div class="rounded-lg border p-3 text-sm"><span class="text-xl">↩</span>
+                        <p class="mt-1 font-semibold">7 Days Return</p>
+                        <p class="text-xs text-slate-500">Easy return policy</p>
+                    </div>
+                    <div class="rounded-lg border p-3 text-sm"><span class="text-xl">✓</span>
+                        <p class="mt-1 font-semibold">Quality Assured</p>
+                        <p class="text-xs text-slate-500">Verified product details</p>
+                    </div>
+                </div>
+
+                <div class="sticky-buy grid grid-cols-2 gap-2 bg-white py-2">
+                    <button id="addToCart"
+                        class="rounded-xl border border-slate-300 bg-white py-3 font-bold hover:bg-slate-50">Add to
+                        cart</button>
+                    <button id="buyNow" class="rounded-xl bg-yellow-400 py-3 font-bold hover:bg-yellow-500">Buy
+                        now</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Details section -->
+        <section class="mt-8 border-t pt-6">
+            <h2 class="mb-4 text-xl font-semibold">Product Details</h2>
+            <div class="grid gap-6 md:grid-cols-2">
+                <div>
+                    <h3 class="mb-2 font-semibold">Description</h3>
+                    <p id="description" class="text-sm leading-6 text-slate-600"></p>
+                </div>
+                <div>
+                    <h3 class="mb-2 font-semibold">Specifications</h3>
+                    <div id="specifications" class="divide-y text-sm"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Size chart modal -->
+    <div id="sizeModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
+        <div class="w-full max-w-md rounded-xl bg-white p-5 shadow-xl">
+            <div class="mb-4 flex items-center justify-between">
+                <h2 class="text-lg font-bold">Shoe Size Chart</h2><button id="closeSizeModal"
+                    class="text-2xl">×</button>
+            </div>
+            <table class="w-full text-left text-sm">
+                <thead>
+                    <tr class="border-b">
+                        <th class="py-2">UK Size</th>
+                        <th>Foot length (cm)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b">
+                        <td class="py-2">6</td>
+                        <td>24.5</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-2">7</td>
+                        <td>25.4</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-2">8</td>
+                        <td>26.2</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-2">9</td>
+                        <td>27.1</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2">10</td>
+                        <td>27.9</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        /*
+          DYNAMIC PRODUCT DATA
+          Change this object or load it from your backend/API later.
+          Each image URL represents one gallery image.
+        */
+        const product = {
+            id: 740,
+            title: "BRUTON -740 EVA Men's Sport Running Shoes For Men",
+            brand: "BRUTON",
+            rating: 3.9,
+            reviewCount: 52234,
+            price: 319,
+            originalPrice: 2999,
+            discount: 89,
+            description: "Lightweight everyday sports shoes designed for comfortable walking, casual outings and daily use. The lace-up closure helps provide a secure fit. Check the selected size and product images before ordering.",
+            colors: [
+                {
+                    name: "White, Black",
+                    swatch: "#e5e7eb",
+                    images: [
+                        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=90",
+                        "https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=900&q=90",
+                        "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=900&q=90",
+                        "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=90"
+                    ]
+                },
+                {
+                    name: "Grey, Black",
+                    swatch: "#9ca3af",
+                    images: [
+                        "https://images.unsplash.com/photo-155鞋?auto=format&fit=crop&w=900&q=90".replace("155鞋", "1552346154-21d32810aba3"),
+                        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=90",
+                        "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=900&q=90",
+                        "https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=900&q=90"
+                    ]
+                }
+            ],
+            sizes: ["6", "7", "8", "9", "10"],
+            specifications: {
+                "Brand": "BRUTON",
+                "Model": "-740 EVA",
+                "Ideal For": "Men",
+                "Closure": "Lace-Ups",
+                "Occasion": "Sports, Casual",
+                "Outer Material": "Synthetic",
+                "Sole Material": "EVA",
+                "Country of Origin": "India"
+            }
+        };
+
+        let selectedColor = 0;
+        let selectedSize = "";
+        let selectedImage = 0;
+        let cartCount = 0;
+        let wishlisted = false;
+
+        const $ = id => document.getElementById(id);
+        const money = value => "₹" + Number(value).toLocaleString("en-IN");
+
+        function renderGallery() {
+            const images = product.colors[selectedColor].images;
+            $("galleryLeft").innerHTML = images.slice(0, 2).map((src, i) => `
+        <button class="gallery-main thumb ${selectedImage === i ? "active" : ""} overflow-hidden rounded-xl" data-image="${i}">
+          <img src="${src}" alt="${product.title} image ${i + 1}" class="h-[360px] w-full object-cover sm:h-[480px]" onerror="this.src='https://placehold.co/700x900?text=Product+Image'">
+        </button>`).join("");
+            $("galleryRight").innerHTML = images.slice(2, 4).map((src, i) => `
+        <button class="gallery-main thumb ${selectedImage === i + 2 ? "active" : ""} overflow-hidden rounded-xl" data-image="${i + 2}">
+          <img src="${src}" alt="${product.title} image ${i + 3}" class="h-[360px] w-full object-cover sm:h-[480px]" onerror="this.src='https://placehold.co/700x900?text=Product+Image'">
+        </button>`).join("");
+        }
+
+        function renderColors() {
+            $("selectedColorText").textContent = product.colors[selectedColor].name;
+            $("colorOptions").innerHTML = product.colors.map((color, index) => `
+        <button class="color-btn ${index === selectedColor ? "selected" : ""} h-20 w-20 overflow-hidden rounded-xl border bg-slate-100 p-1" data-color="${index}" title="${color.name}">
+          <img src="${color.images[0]}" alt="${color.name}" class="h-full w-full rounded-lg object-cover" onerror="this.src='https://placehold.co/100?text=Color'">
+        </button>`).join("");
+        }
+
+        function renderSizes() {
+            $("sizeOptions").innerHTML = product.sizes.map(size => `
+        <button data-size="${size}" class="size-btn h-12 min-w-14 rounded-xl border px-4 text-sm ${selectedSize === size ? "selected" : ""}">${size}</button>`).join("");
+        }
+
+        function renderProduct() {
+            $("breadcrumbName").textContent = product.title;
+            $("productTitle").textContent = `${product.title} (${product.colors[selectedColor].name}${selectedSize ? ", " + selectedSize : ""})`;
+            $("rating").textContent = `${product.rating} ★`;
+            $("reviews").textContent = `${Number(product.reviewCount).toLocaleString("en-IN")} Ratings & Reviews`;
+            $("discount").textContent = `↓${product.discount}%`;
+            $("oldPrice").textContent = money(product.originalPrice);
+            $("price").textContent = money(product.price);
+            $("description").textContent = product.description;
+            $("specifications").innerHTML = Object.entries(product.specifications).map(([key, value]) => `
+        <div class="grid grid-cols-2 gap-4 py-3"><span class="text-slate-500">${key}</span><span>${value}</span></div>`).join("");
+            $("adImage").src = product.colors[0].images[0];
+            renderColors();
+            renderSizes();
+            renderGallery();
+        }
+
+        function selectSize(size) {
+            selectedSize = size;
+            $("sizeError").classList.add("hidden");
+            renderProduct();
+        }
+
+        function addCart() {
+            if (!selectedSize) {
+                $("sizeError").classList.remove("hidden");
+                $("sizeOptions").scrollIntoView({ behavior: "smooth", block: "center" });
+                return false;
+            }
+            cartCount++;
+            $("cartCount").textContent = cartCount;
+            return true;
+        }
+
+        $("colorOptions").addEventListener("click", event => {
+            const button = event.target.closest("[data-color]");
+            if (!button) return;
+            selectedColor = Number(button.dataset.color);
+            selectedImage = 0;
+            renderProduct();
+        });
+
+        $("sizeOptions").addEventListener("click", event => {
+            const button = event.target.closest("[data-size]");
+            if (button) selectSize(button.dataset.size);
+        });
+
+        document.addEventListener("click", event => {
+            const imageButton = event.target.closest("[data-image]");
+            if (imageButton) {
+                selectedImage = Number(imageButton.dataset.image);
+                const images = product.colors[selectedColor].images;
+                // Move the selected gallery image to the first position for a clear preview.
+                const selected = images[selectedImage];
+                product.colors[selectedColor].images = [selected, ...images.filter((_, i) => i !== selectedImage)];
+                selectedImage = 0;
+                renderGallery();
+            }
+        });
+
+        $("addToCart").addEventListener("click", () => {
+            if (addCart()) {
+                $("addToCart").textContent = "Added ✓";
+                setTimeout(() => $("addToCart").textContent = "Add to cart", 1200);
+            }
+        });
+
+        $("buyNow").addEventListener("click", () => {
+            if (addCart()) alert(`Demo checkout\\n${product.title}\\nColor: ${product.colors[selectedColor].name}\\nSize: ${selectedSize}\\nTotal: ${money(product.price)}`);
+        });
+
+        $("wishlistButton").addEventListener("click", () => {
+            wishlisted = !wishlisted;
+            $("wishlistButton").textContent = wishlisted ? "♥" : "♡";
+            $("wishlistButton").classList.toggle("text-red-500", wishlisted);
+        });
+
+        $("sizeChartButton").addEventListener("click", () => $("sizeModal").classList.replace("hidden", "flex"));
+        $("closeSizeModal").addEventListener("click", () => $("sizeModal").classList.replace("flex", "hidden"));
+        $("sizeModal").addEventListener("click", e => { if (e.target === $("sizeModal")) $("sizeModal").classList.replace("flex", "hidden"); });
+
+        $("checkDelivery").addEventListener("click", () => {
+            const pin = $("pincode").value.trim();
+            $("deliveryMessage").textContent = /^\\d{6}$/.test(pin)
+                ? `Delivery availability for ${pin}: Demo check — connect a delivery API for real results.`
+                : "Please enter a valid 6-digit pincode.";
+            $("deliveryMessage").className = /^\\d{6}$/.test(pin) ? "mt-2 text-xs text-green-700" : "mt-2 text-xs text-red-600";
+        });
+
+        $("shareButton").addEventListener("click", async () => {
+            if (navigator.share) {
+                try { await navigator.share({ title: product.title, text: product.title, url: location.href }); } catch (_) { }
+            } else {
+                alert("Share is not supported in this browser.");
+            }
+        });
+
+        renderProduct();
+    </script>
 </body>
 
 </html>
