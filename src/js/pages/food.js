@@ -19,6 +19,8 @@ async function initFoodPage() {
 
     console.log("Loading Food page...");
 
+    await loadCategoryBanner("food");
+
     // Load fashion carousel HTML
     const carouselLoaded = await loadLayout(
         "carousel",

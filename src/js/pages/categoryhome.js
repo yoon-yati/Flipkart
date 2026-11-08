@@ -1,13 +1,13 @@
 
 const categoryhomeBanners = [
 
-    { image: "assets/category/home/h1.webp", alt: "Electronic banner 1" },
-    { image: "assets/category/home/h2.webp", alt: "Electronic banner 2" },
-    { image: "assets/category/home/h3.webp", alt: "Electronic banner 3" },
-    { image: "assets/category/home/h4.webp", alt: "Electronic banner 4" },
-    { image: "assets/category/home/h5.webp", alt: "Electronic banner 5" },
-    { image: "assets/category/home/h6.webp", alt: "Electronic banner 6" },
-    { image: "assets/category/home/h7.webp", alt: "Electronic banner 7" },
+    { image: "assets/category/categoryhome/h1.webp", alt: "Electronic banner 1" },
+    { image: "assets/category/categoryhome/h2.webp", alt: "Electronic banner 2" },
+    { image: "assets/category/categoryhome/h3.webp", alt: "Electronic banner 3" },
+    { image: "assets/category/categoryhome/h4.webp", alt: "Electronic banner 4" },
+    { image: "assets/category/categoryhome/h5.webp", alt: "Electronic banner 5" },
+    { image: "assets/category/categoryhome/h6.webp", alt: "Electronic banner 6" },
+    { image: "assets/category/categoryhome/h7.webp", alt: "Electronic banner 7" },
 
 
 
@@ -16,6 +16,8 @@ const categoryhomeBanners = [
 async function initCategoryhomePage() {
 
     console.log("Loading Categoryhome page...");
+
+    await loadCategoryBanner("categoryhome");
 
     // Load fashion carousel HTML
     const carouselLoaded = await loadLayout(

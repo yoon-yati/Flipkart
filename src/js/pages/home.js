@@ -21,7 +21,7 @@ const homeBanners = [
 
 async function initHomePage() {
 
-    console.log("Loading Home page...");
+    console.log("Loading For you page...");
 
     // Load carousel
     const carouselLoaded = await loadLayout(
@@ -46,7 +46,7 @@ async function initHomePage() {
         window.lucide.createIcons();
     }
 
-    console.log("Home page loaded!");
+    console.log("For you page loaded!");
 }
 
 // Register globally

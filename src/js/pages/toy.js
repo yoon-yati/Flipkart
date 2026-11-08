@@ -18,6 +18,8 @@ async function initToyPage() {
 
     console.log("Loading Toy page...");
 
+    await loadCategoryBanner("toy");
+
     // Load fashion carousel HTML
     const carouselLoaded = await loadLayout(
         "carousel",

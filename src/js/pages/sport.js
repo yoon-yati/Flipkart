@@ -16,6 +16,8 @@ async function initSportPage() {
 
     console.log("Loading Sports page...");
 
+        await loadCategoryBanner("sport");
+
     // Load fashion carousel HTML
     const carouselLoaded = await loadLayout(
         "carousel",

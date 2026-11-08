@@ -15,6 +15,8 @@ async function initWheelPage() {
 
     console.log("Loading Wheel page...");
 
+    await loadCategoryBanner("wheel");
+
     // Load fashion carousel HTML
     const carouselLoaded = await loadLayout(
         "carousel",

@@ -98,11 +98,208 @@ const categoryBannerData = {
         { image: "bb15.webp", name: "Hair Care" },
     ],
 
-    home: [
-        { image: "h1.webp", name: "Furniture" },
-        { image: "h2.webp", name: "Kitchen" },
-        { image: "h3.webp", name: "Decor" }
-    ]
+    categoryhome: [
+        { image: "bh1.webp", name: "Furniture" },
+        { image: "bh2.webp", name: "Kitchen" },
+        { image: "bh3.webp", name: "Decor" },
+        { image: "bh4.webp", name: "Furniture" },
+        { image: "bh5.webp", name: "Kitchen" },
+        { image: "bh6.webp", name: "Decor" },
+        { image: "bh7.webp", name: "Furniture" },
+        { image: "bh8.webp", name: "Decor" },
+        { image: "bh9.webp", name: "Furniture" },
+        { image: "bh10.webp", name: "Kitchen" },
+        { image: "bh11.webp", name: "Decor" },
+        { image: "bh12.webp", name: "Furniture" },
+        { image: "bh13.webp", name: "Kitchen" },
+        { image: "bh14.webp", name: "Decor" },
+        { image: "bh15.webp", name: "Furniture" },
+        { image: "bh16.webp", name: "Kitchen" },
+        { image: "bh17.webp", name: "Decor" },
+        { image: "bh18.webp", name: "Furniture" },
+        { image: "bh19.webp", name: "Kitchen" },
+        { image: "bh20.webp", name: "Decor" },
+        { image: "bh21.webp", name: "Furniture" },
+        { image: "bh22.webp", name: "Kitchen" },
+        { image: "bh23.webp", name: "Decor" },
+        { image: "bh24.webp", name: "Furniture" },
+
+    ],
+
+    appliance: [
+        { image: "ba1.webp", name: "Shop Now" },
+        { image: "ba2.webp", name: "Tee, Shirts" },
+        { image: "ba3.webp", name: "Jeans, Trousers" },
+        { image: "ba4.webp", name: "Casual Shoes" },
+        { image: "ba5.webp", name: "Sports Shoes" },
+        { image: "ba6.webp", name: "Watches" },
+        { image: "ba7.webp", name: "Kurta Pajama" },
+        { image: "ba8.webp", name: "Jeans, Trousers" },
+        { image: "ba9.webp", name: "Clogs" },
+        { image: "ba10.webp", name: "Trunk,vest" },
+        { image: "ba11.webp", name: "Wallet & Belts" },
+        { image: "ba12.webp", name: "Shop Now" },
+        { image: "ba13.webp", name: "Style Hub" },
+        { image: "ba14.webp", name: "Shop Now" },
+        { image: "ba15.webp", name: "Kurta sets" },
+        { image: "ba16.webp", name: "Dresses, Coords" },
+
+    ],
+
+    toy: [
+        { image: "bt1.webp", name: "Shop Now" },
+        { image: "bt2.webp", name: "Tee, Shirts" },
+        { image: "bt3.webp", name: "Jeans, Trousers" },
+        { image: "bt4.webp", name: "Casual Shoes" },
+        { image: "bt5.webp", name: "Sports Shoes" },
+        { image: "bt6.webp", name: "Watches" },
+        { image: "bt7.webp", name: "Kurta Pajama" },
+        { image: "bt8.webp", name: "Jeans, Trousers" },
+        { image: "bt9.webp", name: "Clogs" },
+        { image: "bt10.webp", name: "Trunk,vest" },
+        { image: "bt11.webp", name: "Wallet & Belts" },
+        { image: "bt12.webp", name: "Shop Now" },
+        { image: "bt13.webp", name: "Style Hub" },
+        { image: "bt14.webp", name: "Shop Now" },
+
+
+    ],
+
+    food: [
+        { image: "bf1.webp", name: "Furniture" },
+        { image: "bf2.webp", name: "Kitchen" },
+        { image: "bf3.webp", name: "Decor" },
+        { image: "bf4.webp", name: "Furniture" },
+        { image: "bf5.webp", name: "Kitchen" },
+        { image: "bf6.webp", name: "Decor" },
+        { image: "bf7.webp", name: "Furniture" },
+        { image: "bf8.webp", name: "Decor" },
+        { image: "bf9.webp", name: "Furniture" },
+        { image: "bf10.webp", name: "Kitchen" },
+        { image: "bf11.webp", name: "Decor" },
+        { image: "bf12.webp", name: "Furniture" },
+        { image: "bf13.webp", name: "Kitchen" },
+        { image: "bf14.webp", name: "Decor" },
+        { image: "bf15.webp", name: "Furniture" },
+        { image: "bf16.webp", name: "Kitchen" },
+        { image: "bf17.webp", name: "Decor" },
+        { image: "bf18.webp", name: "Furniture" },
+        { image: "bf19.webp", name: "Kitchen" },
+
+
+    ],
+
+    accessorie: [
+        { image: "ba1.webp", name: "Shop Now" },
+        { image: "ba2.webp", name: "Tee, Shirts" },
+        { image: "ba3.webp", name: "Jeans, Trousers" },
+        { image: "ba4.webp", name: "Casual Shoes" },
+        { image: "ba5.webp", name: "Sports Shoes" },
+        { image: "ba6.webp", name: "Watches" },
+        { image: "ba7.webp", name: "Kurta Pajama" },
+        { image: "ba8.webp", name: "Jeans, Trousers" },
+        { image: "ba9.webp", name: "Clogs" },
+        { image: "ba10.webp", name: "Trunk,vest" },
+        { image: "ba11.webp", name: "Wallet & Belts" },
+        { image: "ba12.webp", name: "Shop Now" },
+        { image: "ba13.webp", name: "Style Hub" },
+
+
+    ],
+
+    sport: [
+        { image: "bs1.webp", name: "Furniture" },
+        { image: "bs2.webp", name: "Kitchen" },
+        { image: "bs3.webp", name: "Decor" },
+        { image: "bs4.webp", name: "Furniture" },
+        { image: "bs5.webp", name: "Kitchen" },
+        { image: "bs6.webp", name: "Decor" },
+        { image: "bs7.webp", name: "Furniture" },
+        { image: "bs8.webp", name: "Decor" },
+        { image: "bs9.webp", name: "Furniture" },
+        { image: "bs10.webp", name: "Kitchen" },
+        { image: "bs11.webp", name: "Decor" },
+        { image: "bs12.webp", name: "Furniture" },
+        { image: "bs13.webp", name: "Kitchen" },
+        { image: "bs14.webp", name: "Decor" },
+        { image: "bs15.webp", name: "Furniture" },
+
+
+    ],
+
+
+
+    furniture: [
+        { image: "bf1.webp", name: "Furniture" },
+        { image: "bf2.webp", name: "Kitchen" },
+        { image: "bf3.webp", name: "Decor" },
+        { image: "bf4.webp", name: "Furniture" },
+        { image: "bf5.webp", name: "Kitchen" },
+        { image: "bf6.webp", name: "Decor" },
+        { image: "bf7.webp", name: "Furniture" },
+        { image: "bf8.webp", name: "Decor" },
+        { image: "bf9.webp", name: "Furniture" },
+        { image: "bf10.webp", name: "Kitchen" },
+        { image: "bf11.webp", name: "Decor" },
+        { image: "bf12.webp", name: "Furniture" },
+        { image: "bf13.webp", name: "Kitchen" },
+        { image: "bf14.webp", name: "Decor" },
+        { image: "bf15.webp", name: "Furniture" },
+        { image: "bf16.webp", name: "Kitchen" },
+        { image: "bf17.webp", name: "Decor" },
+        { image: "bf18.webp", name: "Furniture" },
+        { image: "bf19.webp", name: "Kitchen" },
+        { image: "bf20.webp", name: "Decor" },
+        { image: "bf21.webp", name: "Furniture" },
+        { image: "bf22.webp", name: "Kitchen" },
+
+    ],
+
+    book: [
+        { image: "bb1.webp", name: "Furniture" },
+        { image: "bb2.webp", name: "Kitchen" },
+        { image: "bb3.webp", name: "Decor" },
+        { image: "bb4.webp", name: "Furniture" },
+        { image: "bb5.webp", name: "Kitchen" },
+        { image: "bb6.webp", name: "Decor" },
+        { image: "bb7.webp", name: "Furniture" },
+        { image: "bb8.webp", name: "Decor" },
+        { image: "bb9.webp", name: "Furniture" },
+        { image: "bb10.webp", name: "Kitchen" },
+        { image: "bb11.webp", name: "Decor" },
+        { image: "bb12.webp", name: "Furniture" },
+        { image: "bb13.webp", name: "Kitchen" },
+
+
+    ],
+
+
+    wheel: [
+        { image: "bw1.webp", name: "Furniture" },
+        { image: "bw2.webp", name: "Kitchen" },
+        { image: "bw3.webp", name: "Decor" },
+        { image: "bw4.webp", name: "Furniture" },
+        { image: "bw5.webp", name: "Kitchen" },
+        { image: "bw6.webp", name: "Decor" },
+        { image: "bw7.webp", name: "Furniture" },
+        { image: "bw8.webp", name: "Decor" },
+        { image: "bw9.webp", name: "Furniture" },
+        { image: "bw10.webp", name: "Kitchen" },
+        { image: "bw11.webp", name: "Decor" },
+        { image: "bw12.webp", name: "Furniture" },
+        { image: "bw13.webp", name: "Kitchen" },
+        { image: "bw14.webp", name: "Decor" },
+        { image: "bw15.webp", name: "Furniture" },
+        { image: "bw16.webp", name: "Kitchen" },
+        { image: "bw17.webp", name: "Decor" },
+        { image: "bw18.webp", name: "Furniture" },
+        { image: "bw19.webp", name: "Kitchen" },
+        { image: "bw20.webp", name: "Decor" },
+        { image: "bw21.webp", name: "Furniture" },
+        { image: "bw22.webp", name: "Kitchen" },
+
+    ],
+
 
 };
 

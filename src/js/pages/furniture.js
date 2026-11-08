@@ -19,6 +19,8 @@ async function initFurniturePage() {
 
     console.log("Loading Furniture page...");
 
+        await loadCategoryBanner("furniture");
+
     // Load fashion carousel HTML
     const carouselLoaded = await loadLayout(
         "carousel",
