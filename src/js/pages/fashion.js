@@ -16,9 +16,10 @@ async function initFashionPage() {
 
     console.log("Loading Fashion page...");
 
+    // 1. Load category banner
     await loadCategoryBanner("fashion");
 
-    // Load fashion carousel HTML
+    // 2. Load main carousel HTML
     const carouselLoaded = await loadLayout(
         "carousel",
         "components/carousel.html"
@@ -30,6 +31,10 @@ async function initFashionPage() {
         console.error("Fashion carousel could not load!");
     }
 
+    // 3. Render promotional banners
+    renderPromoBanners("fashion");
+
+    // 4. Initialize Lucide icons
     if (window.lucide) {
         window.lucide.createIcons();
     }

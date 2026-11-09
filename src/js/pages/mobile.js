@@ -43,6 +43,9 @@ async function initMobilePage() {
     //     loadLayout("products", "components/products.html")
     // ]);
 
+    // 3. Render promotional banners
+    renderPromoBanners("mobile");
+
     if (window.lucide) {
         window.lucide.createIcons();
     }
