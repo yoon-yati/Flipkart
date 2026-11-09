@@ -84,7 +84,7 @@ const promoBannerData = {
         {
             title: "Today's lowest prices",
             background: "assets/category/fashion/fashion-bg2.webp",
-            countdown: "00d : 15h : 52m : 34s",
+            countdown: "00d : 1h : 30m : 10s",
 
             products: [
                 {
@@ -348,6 +348,39 @@ const promoBannerData = {
                     image: "assets/category/mobile/products/m11.webp",
                     offer: "",
                     name: "Samsung"
+                },
+            ]
+        }
+
+    ],
+
+    electronic: [
+
+        // BANNER 1
+        {
+            title: "New Deal Every 3 hours",
+            background: "",
+
+            products: [
+                {
+                    image: "assets/category/electronic/eb1.webp",
+                    offer: "Under ₹499",
+                    name: "Cargo"
+                },
+                {
+                    image: "assets/category/fashion/products/hf2.webp",
+                    offer: "Under ₹349",
+                    name: "Shirts"
+                },
+                {
+                    image: "assets/category/fashion/products/hf3.webp",
+                    offer: "Min. 70% Off",
+                    name: "Killer, Levi's..."
+                },
+                {
+                    image: "assets/category/fashion/products/hf4.webp",
+                    offer: "Min. 80% Off",
+                    name: "Watches"
                 },
             ]
         }

@@ -33,6 +33,9 @@ async function initElectronicPage() {
         console.error("Electronic carousel could not load!");
     }
 
+    // 3. Render promotional banners
+    renderPromoBanners("electronic");
+
     // Load other components
     // await Promise.all([
     //     loadLayout("phoneproductlist", "components/phoneproductlist.html"),

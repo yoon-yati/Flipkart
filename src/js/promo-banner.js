@@ -1,3 +1,79 @@
+
+// ======================================
+// COUNTDOWN HELPERS
+// ======================================
+
+const promoCountdownIntervals = new Map();
+
+function countdownToSeconds(value) {
+    const match = value.match(
+        /(\d+)\s*d\s*:\s*(\d+)\s*h\s*:\s*(\d+)\s*m\s*:\s*(\d+)\s*s/i
+    );
+
+    if (!match) return 0;
+
+    const [, days, hours, minutes, seconds] = match;
+
+    return (
+        Number(days) * 86400 +
+        Number(hours) * 3600 +
+        Number(minutes) * 60 +
+        Number(seconds)
+    );
+}
+
+function formatCountdown(totalSeconds) {
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${String(days).padStart(2, "0")}d : ${String(hours).padStart(2, "0")}h : ${String(minutes).padStart(2, "0")}m : ${String(seconds).padStart(2, "0")}s`;
+}
+
+
+// ======================================
+// START DYNAMIC COUNTDOWN
+// ======================================
+
+function startPromoCountdown(container) {
+
+    // Clear previous timers
+    promoCountdownIntervals.forEach(timer => clearInterval(timer));
+    promoCountdownIntervals.clear();
+
+    container.querySelectorAll("[data-countdown]").forEach(element => {
+
+        let remainingSeconds = Number(element.dataset.seconds);
+
+        const updateCountdown = () => {
+
+            if (remainingSeconds <= 0) {
+                element.textContent = "00d : 00h : 00m : 00s";
+
+                clearInterval(timer);
+                promoCountdownIntervals.delete(element);
+
+                // Remove only the banner containing this countdown
+                element.closest("section")?.remove();
+
+                return;
+            }
+
+            element.textContent = formatCountdown(remainingSeconds);
+
+            remainingSeconds--;
+        };
+
+        updateCountdown();
+
+        const timer = setInterval(updateCountdown, 1000);
+
+        promoCountdownIntervals.set(element, timer);
+    });
+}
+
+
 // ======================================
 // REUSABLE PROMOTIONAL BANNER
 // ======================================
@@ -34,8 +110,12 @@ function renderPromoBanners(categoryName, containerId = "promoBanners") {
                 </h2>
 
                 ${banner.countdown ? `
-                    <span class="inline-block bg-white text-gray-800
-                                 text-xs font-semibold rounded px-3 py-1 mt-1">
+                    <span
+                        data-countdown
+                        data-seconds="${countdownToSeconds(banner.countdown)}"
+                        class="inline-block bg-white text-gray-800
+                               text-xs font-semibold rounded px-3 py-1 mt-1"
+                    >
                         ${banner.countdown}
                     </span>
                 ` : ""}
@@ -48,8 +128,7 @@ function renderPromoBanners(categoryName, containerId = "promoBanners") {
                 <div
                     id="promo-track-${index}"
                     class="flex gap-3 overflow-x-auto scroll-smooth
-                           snap-x snap-mandatory scrollbar-hide
-                           pb-1"
+                           snap-x snap-mandatory scrollbar-hide pb-1"
                 >
 
                     ${banner.products.map(product => `
@@ -58,7 +137,6 @@ function renderPromoBanners(categoryName, containerId = "promoBanners") {
                            class="group flex-none w-[140px] sm:w-[165px]
                                   snap-start text-center">
 
-                            <!-- Product Image -->
                             <div class="relative h-[170px] sm:h-[185px]
                                         bg-white rounded-2xl overflow-hidden">
 
@@ -71,7 +149,6 @@ function renderPromoBanners(categoryName, containerId = "promoBanners") {
                                            transition-transform duration-300"
                                 >
 
-                                <!-- Offer Price -->
                                 <div class="absolute bottom-0 left-0 w-full
                                             bg-gradient-to-t from-yellow-300
                                             to-yellow-200 py-2 px-1">
@@ -85,7 +162,6 @@ function renderPromoBanners(categoryName, containerId = "promoBanners") {
 
                             </div>
 
-                            <!-- Product Name -->
                             <p class="text-white text-sm sm:text-base
                                       mt-2 truncate">
                                 ${product.name}
@@ -173,7 +249,18 @@ function renderPromoBanners(categoryName, containerId = "promoBanners") {
 
     });
 
+
+    // ======================================
+    // INITIALIZE COUNTDOWN
+    // ======================================
+
+    startPromoCountdown(container);
+
 }
 
-// Make function globally accessible
+
+// ======================================
+// GLOBAL ACCESS
+// ======================================
+
 window.renderPromoBanners = renderPromoBanners;

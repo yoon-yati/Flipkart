@@ -5,7 +5,7 @@
 const categoryBannerData = {
 
     fashion: [
-        { image: "f1.webp", name: "Shop Now" },
+        { image: "f1.webp", name: "Shop Now", link: "fashion.html" },
         { image: "f2.webp", name: "Tee, Shirts" },
         { image: "f3.webp", name: "Jeans, Trousers" },
         { image: "f4.webp", name: "Casual Shoes" },
