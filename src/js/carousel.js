@@ -46,7 +46,7 @@ function initCarousel(banners) {
     dotsContainer.innerHTML = banners.map((_, index) => `
         <button
             type="button"
-            aria-label="Go to banner ${index + 1}"
+            aria-label="Go to banner ${index + 1}"    
             class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300">
         </button>
     `).join("");

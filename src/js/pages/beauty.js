@@ -32,6 +32,8 @@ async function initBeautyPage() {
     } else {
         console.error("Beauty carousel could not load!");
     }
+    // 3. Render promotional banners
+    renderPromoBanners("beauty");
 
     // Load other components
     // await Promise.all([

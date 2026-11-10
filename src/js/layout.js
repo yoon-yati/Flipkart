@@ -113,6 +113,12 @@ const pages = {
         init: "initWheelPage"
     },
 
+    // NEW separate product-list view
+    productlist: {
+        file: "components/product-list.html",
+        init: "initProductListPage"
+    }
+
 
 };
 
@@ -121,21 +127,15 @@ const pages = {
 // LOAD SELECTED PAGE
 // =====================================
 
-async function loadPage(pageName) {
+async function loadPage(pageName, categoryName, filterName) {
 
     const selectedPage = pages[pageName] ? pageName : "foryou";
-
     const page = pages[selectedPage];
 
-    // Load page HTML
-    const loaded = await loadLayout(
-        "page-content",
-        page.file
-    );
+    const loaded = await loadLayout("page-content", page.file);
 
     if (!loaded) return;
 
-    // Find initialization function
     const initFunction = window[page.init];
 
     if (typeof initFunction !== "function") {
@@ -143,8 +143,8 @@ async function loadPage(pageName) {
         return;
     }
 
-    // Initialize selected page
-    await initFunction();
+    await initFunction(categoryName || selectedPage, filterName || "all");
+
 
     // Update active category
     document.querySelectorAll(".category-link").forEach(link => {
@@ -207,23 +207,22 @@ async function initWebsite() {
 
     }
 
-
     // Browser back and forward
     window.addEventListener("popstate", () => {
 
-        const pageName =
-            new URLSearchParams(window.location.search).get("page") || "foryou";
+        const params = new URLSearchParams(window.location.search);
+        const pageName = params.get("page") || "foryou";
 
-        loadPage(pageName);
+        loadPage(pageName, params.get("category"), params.get("filter"));
 
     });
 
 
     // Load initial page
-    const initialPage =
-        new URLSearchParams(window.location.search).get("page") || "foryou";
+    const params = new URLSearchParams(window.location.search);
+    const initialPage = params.get("page") || "foryou";
 
-    await loadPage(initialPage);
+    await loadPage(initialPage, params.get("category"), params.get("filter"));
 
 }
 

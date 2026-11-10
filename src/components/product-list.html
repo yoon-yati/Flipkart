@@ -1,0 +1,73 @@
+<main class="min-h-screen bg-[#f1f3f6] p-2 sm:p-3">
+    <div class="mx-auto grid max-w-[1600px] grid-cols-1 items-start gap-2 lg:grid-cols-[230px_minmax(0,1fr)]">
+        <aside class="bg-white text-[#212121]">
+            <div class="flex items-center justify-between border-b border-gray-100 px-4 py-4">
+                <h2 class="text-base font-semibold">Filters</h2>
+                <button id="clearFilters" type="button"
+                    class="text-[11px] font-semibold text-blue-600 hover:text-blue-800">
+                    CLEAR ALL
+                </button>
+            </div>
+
+            <div id="activeFilters" class="flex flex-wrap gap-2 border-b border-gray-100 px-3 py-3"></div>
+
+            <section class="border-b border-gray-100 px-4 py-4">
+                <h3 class="mb-3 text-[11px] font-bold uppercase tracking-wide">Categories</h3>
+                <div id="categoryFilters" class="space-y-2 text-xs"></div>
+            </section>
+
+            <div id="filterGroups"></div>
+        </aside>
+
+        <section class="min-w-0 bg-white text-[#212121]">
+            <div class="border-b border-gray-100 px-4 py-3 sm:px-5">
+                <nav aria-label="Breadcrumb" class="mb-3 flex flex-wrap items-center gap-2 text-[11px] text-gray-500">
+                    <a href="index.html?page=foryou" class="hover:text-blue-600">Home</a>
+                    <span aria-hidden="true">›</span>
+                    <a id="breadcrumbCategory" href="index.html?page=fashion" class="hover:text-blue-600">Fashion</a>
+                    <span aria-hidden="true">›</span>
+                    <span id="breadcrumbFilter" class="text-gray-700">All</span>
+                </nav>
+
+                <p class="mb-4 text-[11px] leading-relaxed text-gray-500">
+                    Explore the latest styles and everyday essentials. Browse popular picks, compare prices, and use the
+                    filters to find products that match your needs.
+                </p>
+
+                <div class="flex flex-wrap items-end justify-between gap-3">
+                    <div>
+                        <h1 id="productHeading" class="text-base font-semibold">Fashion</h1>
+                        <p id="resultCount" class="mt-1 text-[11px] text-gray-500"></p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+                        <span class="font-semibold">Sort By</span>
+                        <button data-sort="popular" type="button"
+                            class="border-b-2 border-blue-600 pb-1 font-semibold text-blue-600">
+                            Popularity
+                        </button>
+                        <button data-sort="low" type="button" class="pb-1 hover:text-blue-600">Price -- Low to
+                            High</button>
+                        <button data-sort="high" type="button" class="pb-1 hover:text-blue-600">Price -- High to
+                            Low</button>
+                        <button data-sort="new" type="button" class="pb-1 hover:text-blue-600">Newest First</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="productGrid" class="grid grid-cols-2 gap-1 border-t border-gray-100 sm:grid-cols-3 xl:grid-cols-4">
+            </div>
+
+            <div id="emptyState" class="hidden px-5 py-16 text-center text-sm text-gray-500">
+                No products found.
+            </div>
+
+            <div class="p-5 text-center">
+                <button id="loadMore" type="button"
+                    class="rounded-sm bg-blue-600 px-8 py-2 text-sm font-medium text-white hover:bg-blue-700">
+                    Load More
+                </button>
+            </div>
+        </section>
+    </div>
+</main>

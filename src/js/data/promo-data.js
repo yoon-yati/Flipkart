@@ -359,7 +359,7 @@ const promoBannerData = {
         // BANNER 1
         {
             title: "New Deal Every 3 hours",
-            background: "",
+            background: "assets/category/electronic/ebanner2.webp",
 
             products: [
                 {
@@ -379,6 +379,137 @@ const promoBannerData = {
                 },
                 {
                     image: "assets/category/fashion/products/hf4.webp",
+                    offer: "Min. 80% Off",
+                    name: "Watches"
+                },
+            ]
+        },
+
+        // BANNER 2
+        {
+            title: "Pay 0% interest on EMI",
+            background: "assets/category/electronic/ebanner2.webp",
+
+            products: [
+                {
+                    image: "assets/category/electronic/ec1.webp",
+                    offer: "Under ₹499",
+                    name: "Cargo"
+                },
+                {
+                    image: "assets/category/electronic/ec2.webp",
+                    offer: "Under ₹349",
+                    name: "Shirts"
+                },
+                {
+                    image: "assets/category/electronic/ec3.webp",
+                    offer: "Min. 70% Off",
+                    name: "Killer, Levi's..."
+                },
+                {
+                    image: "assets/category/electronic/ec4.webp",
+                    offer: "Min. 80% Off",
+                    name: "Watches"
+                },
+                {
+                    image: "assets/category/electronic/ec5.webp",
+                    offer: "Min. 80% Off",
+                    name: "Watches"
+                },
+                {
+                    image: "assets/category/electronic/ec6.webp",
+                    offer: "Min. 80% Off",
+                    name: "Watches"
+                },
+                {
+                    image: "assets/category/electronic/ec7.webp",
+                    offer: "Min. 80% Off",
+                    name: "Watches"
+                },
+                {
+                    image: "assets/category/electronic/ec8.webp",
+                    offer: "Min. 80% Off",
+                    name: "Watches"
+                },
+            ]
+        }
+
+    ],
+
+    beauty: [
+
+        // BANNER 1
+        {
+            title: "Special Gifts for Her",
+            background: "assets/category/electronic/ebanner2.webp",
+
+            products: [
+                {
+                    image: "assets/category/electronic/eb1.webp",
+                    offer: "Under ₹499",
+                    name: "Cargo"
+                },
+                {
+                    image: "assets/category/fashion/products/hf2.webp",
+                    offer: "Under ₹349",
+                    name: "Shirts"
+                },
+                {
+                    image: "assets/category/fashion/products/hf3.webp",
+                    offer: "Min. 70% Off",
+                    name: "Killer, Levi's..."
+                },
+                {
+                    image: "assets/category/fashion/products/hf4.webp",
+                    offer: "Min. 80% Off",
+                    name: "Watches"
+                },
+            ]
+        },
+
+        // BANNER 2
+        {
+            title: "Pay 0% interest on EMI",
+            background: "assets/category/electronic/ebanner2.webp",
+
+            products: [
+                {
+                    image: "assets/category/electronic/ec1.webp",
+                    offer: "Under ₹499",
+                    name: "Cargo"
+                },
+                {
+                    image: "assets/category/electronic/ec2.webp",
+                    offer: "Under ₹349",
+                    name: "Shirts"
+                },
+                {
+                    image: "assets/category/electronic/ec3.webp",
+                    offer: "Min. 70% Off",
+                    name: "Killer, Levi's..."
+                },
+                {
+                    image: "assets/category/electronic/ec4.webp",
+                    offer: "Min. 80% Off",
+                    name: "Watches"
+                },
+                {
+                    image: "assets/category/electronic/ec5.webp",
+                    offer: "Min. 80% Off",
+                    name: "Watches"
+                },
+                {
+                    image: "assets/category/electronic/ec6.webp",
+                    offer: "Min. 80% Off",
+                    name: "Watches"
+                },
+                {
+                    image: "assets/category/electronic/ec7.webp",
+                    offer: "Min. 80% Off",
+                    name: "Watches"
+                },
+                {
+                    image: "assets/category/electronic/ec8.webp",
                     offer: "Min. 80% Off",
                     name: "Watches"
                 },
