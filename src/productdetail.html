@@ -71,35 +71,31 @@
 
     <main class="mx-auto max-w-[1280px] bg-white px-4 pb-8">
         <nav class="overflow-x-auto whitespace-nowrap py-4 text-sm text-slate-500 no-scrollbar">
-            Home / Footwear / Men's Footwear / Men's Sports Shoes / <span id="breadcrumbName"
+            <span id="breadcrumbPath"></span> / <span id="breadcrumbName"
                 class="text-slate-700"></span>
         </nav>
 
         <div class="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.45fr)_minmax(420px,1fr)]">
             <!-- Image gallery -->
             <section class="min-w-0">
-                <div class="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-                    <div id="galleryLeft" class="grid gap-3"></div>
-                    <div id="galleryRight" class="grid gap-3"></div>
-                </div>
+                <div id="productGallery" class="grid grid-cols-1 gap-3 sm:grid-cols-2"></div>
             </section>
 
             <!-- Product information -->
             <section class="min-w-0 lg:pl-1">
                 <div class="mb-5 rounded-lg bg-slate-100 p-2 text-sm">
                     <div class="flex items-center gap-3">
-                        <img id="adImage" class="h-12 w-12 rounded object-cover" alt="Recommended product">
+                        <img id="adImage" class="h-12 w-12 rounded object-cover" alt="">
                         <div class="min-w-0 flex-1">
-                            <p class="truncate text-slate-700">NOBELITE Premium Sports, Gym, Trending, Stylish Running
-                                Shoes</p>
-                            <p class="text-xs font-semibold text-green-700">↓80% <span
-                                    class="text-slate-500 line-through">₹2,499</span> ₹489</p>
+                            <p id="adTitle" class="truncate text-slate-700"></p>
+                            <p class="text-xs font-semibold text-green-700"><span id="adDiscount"></span> <span
+                                    id="adOldPrice" class="text-slate-500 line-through"></span> <span id="adPrice"></span></p>
                         </div>
                         <span class="rounded bg-slate-300 px-2 py-1 text-xs text-white">AD</span>
                     </div>
                 </div>
 
-                <div class="mb-5">
+                <div id="colorSection" class="mb-5">
                     <div class="mb-2 flex items-center justify-between">
                         <h2 class="font-semibold">Selected Color: <span id="selectedColorText"
                                 class="font-normal"></span></h2>
@@ -108,9 +104,9 @@
                     <div id="colorOptions" class="flex flex-wrap gap-4"></div>
                 </div>
 
-                <div class="mb-6">
+                <div id="sizeSection" class="mb-6">
                     <div class="mb-3 flex items-center gap-3">
-                        <h2 class="font-semibold">Select Size</h2>
+                        <h2 id="sizeLabel" class="font-semibold">Select Size</h2>
                         <button class="text-sm font-semibold text-blue-600" id="sizeChartButton">Size Chart</button>
                     </div>
                     <div id="sizeOptions" class="flex flex-wrap gap-2"></div>
@@ -204,17 +200,17 @@
     <div id="sizeModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
         <div class="w-full max-w-md rounded-xl bg-white p-5 shadow-xl">
             <div class="mb-4 flex items-center justify-between">
-                <h2 class="text-lg font-bold">Shoe Size Chart</h2><button id="closeSizeModal"
+                <h2 id="sizeChartTitle" class="text-lg font-bold">Size Chart</h2><button id="closeSizeModal"
                     class="text-2xl">×</button>
             </div>
-            <table class="w-full text-left text-sm">
+            <table id="sizeChartTable" class="w-full text-left text-sm">
                 <thead>
                     <tr class="border-b">
                         <th class="py-2">UK Size</th>
                         <th>Foot length (cm)</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="sizeChartBody">
                     <tr class="border-b">
                         <td class="py-2">6</td>
                         <td>24.5</td>
@@ -240,21 +236,19 @@
         </div>
     </div>
 
+    <script src="js/data/product-data.js"></script>
     <script>
-        /*
-          DYNAMIC PRODUCT DATA
-          Change this object or load it from your backend/API later.
-          Each image URL represents one gallery image.
-        */
-        const product = {
-            id: 740,
+        const fallbackProduct = {
+            id: "demo-running-shoes",
+            category: "fashion",
+            filter: "sports-shoes",
+            categoryPath: ["Footwear", "Men's Footwear", "Sports Shoes"],
             title: "BRUTON -740 EVA Men's Sport Running Shoes For Men",
             brand: "BRUTON",
             rating: 3.9,
             reviewCount: 52234,
             price: 319,
             originalPrice: 2999,
-            discount: 89,
             description: "Lightweight everyday sports shoes designed for comfortable walking, casual outings and daily use. The lace-up closure helps provide a secure fit. Check the selected size and product images before ordering.",
             colors: [
                 {
@@ -271,7 +265,7 @@
                     name: "Grey, Black",
                     swatch: "#9ca3af",
                     images: [
-                        "https://images.unsplash.com/photo-155鞋?auto=format&fit=crop&w=900&q=90".replace("155鞋", "1552346154-21d32810aba3"),
+                        "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=90",
                         "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=90",
                         "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=900&q=90",
                         "https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=900&q=90"
@@ -288,55 +282,170 @@
                 "Outer Material": "Synthetic",
                 "Sole Material": "EVA",
                 "Country of Origin": "India"
+            },
+            sizeChart: {
+                title: "Shoe Size Chart",
+                headers: ["UK Size", "Foot length (cm)"],
+                rows: [["6", "24.5"], ["7", "25.4"], ["8", "26.2"], ["9", "27.1"], ["10", "27.9"]]
             }
         };
 
+        const $ = id => document.getElementById(id);
+        const money = value => "₹" + Number(value).toLocaleString("en-IN");
+        const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, character => ({
+            "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+        })[character]);
+
+        function getSelectedProduct() {
+            const productId = new URLSearchParams(location.search).get("id");
+            if (!productId) return fallbackProduct;
+
+            const catalogProduct = (window.productData || []).find(item => String(item.id) === productId);
+            if (catalogProduct) return catalogProduct;
+
+            try {
+                const storedProduct = JSON.parse(sessionStorage.getItem("selectedProduct") || "null");
+                if (storedProduct && String(storedProduct.id) === productId) return storedProduct;
+            } catch (error) {
+                console.error("Could not read the selected product from session storage:", error);
+            }
+
+            return fallbackProduct;
+        }
+
+        function normalizeProduct(source) {
+            const filters = source.filters || {};
+            const colors = source.colors?.length
+                ? source.colors.map(color => ({ ...color, images: [...(color.images || [])] }))
+                : [{
+                    name: filters.Color || "Default",
+                    swatch: "#e5e7eb",
+                    images: source.images?.length ? [...source.images] : [source.image].filter(Boolean)
+                }];
+            const imagePlaceholder = "https://placehold.co/700x900?text=Product+Image";
+            colors.forEach(color => {
+                if (!color.images.length) color.images = [imagePlaceholder];
+            });
+
+            const sizes = source.sizes?.length
+                ? source.sizes
+                : filters.Size ? [filters.Size] : [];
+            const categoryPath = source.categoryPath?.length
+                ? source.categoryPath
+                : [source.category || "Products"];
+            const specifications = source.specifications || {
+                Brand: source.brand || "—",
+                Category: categoryPath.join(" / "),
+                ...filters
+            };
+            const originalPrice = Number(source.originalPrice || source.price || 0);
+            const price = Number(source.price || 0);
+
+            return {
+                ...source,
+                brand: source.brand || "Unbranded",
+                colors,
+                sizes,
+                categoryPath,
+                specifications,
+                price,
+                originalPrice,
+                discount: originalPrice > price && originalPrice > 0
+                    ? Math.round((1 - price / originalPrice) * 100)
+                    : 0,
+                description: source.description
+                    || `${source.title} by ${source.brand || "the selected brand"}. Product details and available options are based on the catalog information provided.`,
+                sizeChart: source.sizeChart || null
+            };
+        }
+
+        const product = normalizeProduct(getSelectedProduct());
         let selectedColor = 0;
         let selectedSize = "";
         let selectedImage = 0;
         let cartCount = 0;
         let wishlisted = false;
 
-        const $ = id => document.getElementById(id);
-        const money = value => "₹" + Number(value).toLocaleString("en-IN");
-
         function renderGallery() {
             const images = product.colors[selectedColor].images;
-            $("galleryLeft").innerHTML = images.slice(0, 2).map((src, i) => `
-        <button class="gallery-main thumb ${selectedImage === i ? "active" : ""} overflow-hidden rounded-xl" data-image="${i}">
-          <img src="${src}" alt="${product.title} image ${i + 1}" class="h-[360px] w-full object-cover sm:h-[480px]" onerror="this.src='https://placehold.co/700x900?text=Product+Image'">
-        </button>`).join("");
-            $("galleryRight").innerHTML = images.slice(2, 4).map((src, i) => `
-        <button class="gallery-main thumb ${selectedImage === i + 2 ? "active" : ""} overflow-hidden rounded-xl" data-image="${i + 2}">
-          <img src="${src}" alt="${product.title} image ${i + 3}" class="h-[360px] w-full object-cover sm:h-[480px]" onerror="this.src='https://placehold.co/700x900?text=Product+Image'">
-        </button>`).join("");
+            $("productGallery").innerHTML = images.map((src, index) => `
+                <button class="gallery-main thumb ${selectedImage === index ? "active" : ""} ${images.length === 1 ? "sm:col-span-2" : ""} overflow-hidden rounded-xl"
+                    data-image="${index}" aria-label="View product image ${index + 1}">
+                    <img src="${escapeHtml(src)}" alt="${escapeHtml(product.title)} image ${index + 1}"
+                        class="h-[360px] w-full object-contain sm:h-[480px]">
+                </button>`).join("");
+            $("productGallery").querySelectorAll("img").forEach(image => {
+                image.addEventListener("error", () => {
+                    image.src = "https://placehold.co/700x900?text=Product+Image";
+                }, { once: true });
+            });
         }
 
         function renderColors() {
             $("selectedColorText").textContent = product.colors[selectedColor].name;
             $("colorOptions").innerHTML = product.colors.map((color, index) => `
-        <button class="color-btn ${index === selectedColor ? "selected" : ""} h-20 w-20 overflow-hidden rounded-xl border bg-slate-100 p-1" data-color="${index}" title="${color.name}">
-          <img src="${color.images[0]}" alt="${color.name}" class="h-full w-full rounded-lg object-cover" onerror="this.src='https://placehold.co/100?text=Color'">
-        </button>`).join("");
+                <button class="color-btn ${index === selectedColor ? "selected" : ""} h-20 w-20 overflow-hidden rounded-xl border bg-slate-100 p-1"
+                    data-color="${index}" title="${escapeHtml(color.name)}">
+                    <img src="${escapeHtml(color.images[0])}" alt="${escapeHtml(color.name)}"
+                        class="h-full w-full rounded-lg object-cover">
+                </button>`).join("");
+            $("colorOptions").querySelectorAll("img").forEach(image => {
+                image.addEventListener("error", () => {
+                    image.src = "https://placehold.co/100?text=Color";
+                }, { once: true });
+            });
         }
 
         function renderSizes() {
             $("sizeOptions").innerHTML = product.sizes.map(size => `
-        <button data-size="${size}" class="size-btn h-12 min-w-14 rounded-xl border px-4 text-sm ${selectedSize === size ? "selected" : ""}">${size}</button>`).join("");
+                <button data-size="${escapeHtml(size)}" class="size-btn h-12 min-w-14 rounded-xl border px-4 text-sm ${selectedSize === size ? "selected" : ""}">${escapeHtml(size)}</button>`).join("");
+        }
+
+        function renderSizeChart() {
+            const chart = product.sizeChart;
+            $("sizeChartButton").classList.toggle("hidden", !chart);
+            if (!chart) return;
+
+            $("sizeChartTitle").textContent = chart.title || "Size Chart";
+            const headers = $("sizeChartTable").querySelectorAll("thead th");
+            headers.forEach((header, index) => {
+                header.textContent = chart.headers?.[index] || "";
+            });
+            $("sizeChartBody").innerHTML = (chart.rows || []).map(row => `
+                <tr class="border-b">${row.map(value => `<td class="py-2">${escapeHtml(value)}</td>`).join("")}</tr>
+            `).join("");
         }
 
         function renderProduct() {
             $("breadcrumbName").textContent = product.title;
-            $("productTitle").textContent = `${product.title} (${product.colors[selectedColor].name}${selectedSize ? ", " + selectedSize : ""})`;
+            $("breadcrumbPath").textContent = ["Home", ...product.categoryPath].join(" / ");
+            $("productTitle").textContent = [
+                product.title,
+                product.colors[selectedColor].name !== "Default" ? product.colors[selectedColor].name : "",
+                selectedSize
+            ].filter(Boolean).join(" · ");
             $("rating").textContent = `${product.rating} ★`;
-            $("reviews").textContent = `${Number(product.reviewCount).toLocaleString("en-IN")} Ratings & Reviews`;
+            $("reviews").textContent = product.reviewCount
+                ? `${Number(product.reviewCount).toLocaleString("en-IN")} Ratings & Reviews`
+                : "Customer rating";
             $("discount").textContent = `↓${product.discount}%`;
             $("oldPrice").textContent = money(product.originalPrice);
             $("price").textContent = money(product.price);
             $("description").textContent = product.description;
             $("specifications").innerHTML = Object.entries(product.specifications).map(([key, value]) => `
-        <div class="grid grid-cols-2 gap-4 py-3"><span class="text-slate-500">${key}</span><span>${value}</span></div>`).join("");
+                <div class="grid grid-cols-2 gap-4 py-3"><span class="text-slate-500">${escapeHtml(key)}</span><span>${escapeHtml(value)}</span></div>`).join("");
+            $("colorSection").classList.toggle("hidden",
+                product.colors.length === 1 && product.colors[0].name === "Default");
+            $("sizeSection").classList.toggle("hidden", product.sizes.length === 0);
+            $("sizeLabel").textContent = product.filter?.includes("shoes") ? "Select Shoe Size" : "Select Size";
+            $("reviews").classList.toggle("hidden", !product.rating);
             $("adImage").src = product.colors[0].images[0];
+            $("adImage").alt = product.title;
+            $("adTitle").textContent = product.title;
+            $("adDiscount").textContent = `↓${product.discount}%`;
+            $("adOldPrice").textContent = money(product.originalPrice);
+            $("adPrice").textContent = money(product.price);
+            renderSizeChart();
             renderColors();
             renderSizes();
             renderGallery();
@@ -349,7 +458,7 @@
         }
 
         function addCart() {
-            if (!selectedSize) {
+            if (product.sizes.length && !selectedSize) {
                 $("sizeError").classList.remove("hidden");
                 $("sizeOptions").scrollIntoView({ behavior: "smooth", block: "center" });
                 return false;
@@ -372,15 +481,10 @@
             if (button) selectSize(button.dataset.size);
         });
 
-        document.addEventListener("click", event => {
+        $("productGallery").addEventListener("click", event => {
             const imageButton = event.target.closest("[data-image]");
             if (imageButton) {
                 selectedImage = Number(imageButton.dataset.image);
-                const images = product.colors[selectedColor].images;
-                // Move the selected gallery image to the first position for a clear preview.
-                const selected = images[selectedImage];
-                product.colors[selectedColor].images = [selected, ...images.filter((_, i) => i !== selectedImage)];
-                selectedImage = 0;
                 renderGallery();
             }
         });

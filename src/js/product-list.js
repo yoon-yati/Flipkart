@@ -123,18 +123,22 @@ const productFilterOptions = {
 
 const productCategoryPaths = {
     fashion: {
-        "jeans-trousers": ["Clothing and Accessories", "Bottomwear"],
-        "trunk-vest": ["Clothing and Accessories", "Bottomwear"],
-        "sports-shoes": ["Footwear", "Men's Footwear"],
-        "casual-shoes": ["Footwear", "Men's Footwear"],
-        "women-shoes": ["Footwear", "Women's Footwear"],
-        "tee-shirts": ["Clothing and Accessories", "Topwear"],
-        "shirts": ["Clothing and Accessories", "Topwear"],
-        "kurta-pajama": ["Clothing and Accessories", "Topwear"],
-        "kurta-sets": ["Clothing and Accessories", "Topwear"],
-        "dresses-coords": ["Clothing and Accessories", "Western Wear"],
-        "sarees": ["Clothing and Accessories", "Ethnic Wear"],
-        "kurtis": ["Clothing and Accessories", "Ethnic Wear"]
+        "jeans-trousers": ["Clothing and Accessories", "Bottomwear", "Jeans, Trousers"],
+        "trunk-vest": ["Clothing and Accessories", "Bottomwear", "Trunk,vest"],
+        "sports-shoes": ["Clothing and Accessories", "Footwear", "Men's Footwear", "Sports Shoes"],
+        "casual-shoes": ["Clothing and Accessories", "Footwear", "Men's Footwear", "Casual Shoes"],
+        clogs: ["Clothing and Accessories", "Footwear", "Men's Footwear", "Clogs"],
+        "women-shoes": ["Clothing and Accessories", "Footwear", "Women's Footwear", "Women Shoes"],
+        "tee-shirts": ["Clothing and Accessories", "Topwear", "T-Shirts"],
+        shirts: ["Clothing and Accessories", "Topwear", "Shirts"],
+        "kurta-pajama": ["Clothing and Accessories", "Topwear", "Kurta Pajama"],
+        "kurta-sets": ["Clothing and Accessories", "Topwear", "Kurta Sets"],
+        "dresses-coords": ["Clothing and Accessories", "Western Wear", "Dresses, Coords"],
+        sarees: ["Clothing and Accessories", "Ethnic Wear", "Sarees"],
+        kurtis: ["Clothing and Accessories", "Ethnic Wear", "Kurtis"],
+        "mens-sweaters": ["Clothing and Accessories", "Winter Wear", "Sweaters and Cardigans", "Men's Sweaters"],
+        "womens-sweaters": ["Clothing and Accessories", "Winter Wear", "Sweaters and Cardigans", "Women's Sweaters"],
+
     },
     mobile: { default: ["Mobiles and Accessories", "Mobiles"] },
     book: { default: ["Books and Media", "Books"] },
@@ -157,8 +161,11 @@ function getProductCategoryPath(categoryName, filterName, selectedItem) {
     if (product?.categoryPath) return product.categoryPath;
 
     const categoryPaths = productCategoryPaths[categoryName] || {};
+    // console.log('categoryPaths', categoryPaths);
+    // console.log('filterName', filterName);
     const configuredPath = categoryPaths[filterName] || categoryPaths.default;
 
+    // console.log('configuredPath', configuredPath);
     return configuredPath || [categoryName, selectedItem?.name || "All"];
 }
 
@@ -273,6 +280,7 @@ function renderCatalogCategories(container, categoryName, filterName, products, 
     const currentPath = selectedProduct
         ? selectedProduct.categoryPath.slice(0, -1)
         : validCatalogCategoryPath(categoryName, requestedPath);
+
     const visibleProducts = currentPath.length
         ? products.filter(product => isCategoryPathPrefix(currentPath, product.categoryPath))
         : products;
@@ -437,12 +445,21 @@ function getSampleProducts(categoryName, filterName, filterLabel, facetGroups) {
                 : filterName === "realme"
                     ? ["assets/products/p3.jpeg"]
                     : [];
-    const fashionImages = filterName === "sports-shoes" || filterName === "casual-shoes"
-        ? ["assets/products/p16.jpeg", "assets/products/p15.jpeg"]
-        : filterName === "watches"
-            ? ["assets/products/p7.jpeg", "assets/products/p8.jpeg"]
-            : [];
-    const titles = getSampleProductTitles(categoryName, filterName, filterLabel);
+    const fashionImages = filterName === "sports-shoes"
+        ? ["assets/products/p16.jpeg"]
+        : filterName === "casual-shoes"
+            ? ["assets/products/p15.jpeg"]
+            : filterName === "watches"
+                ? ["assets/products/p7.jpeg", "assets/products/p8.jpeg"]
+                : [];
+    const titles = categoryName === "fashion" && filterName === "sports-shoes"
+        ? [
+            "Men's Lightweight Running Shoes",
+            "Men's Mesh Sports Shoes",
+            "Men's Training Sneakers",
+            "Men's Walking and Running Shoes"
+        ]
+        : getSampleProductTitles(categoryName, filterName, filterLabel);
     const brands = categoryName === "mobile" && filterName === "all"
         ? ["OnePlus", "POCO", "Samsung", "AI+"]
         : categoryName === "mobile" && filterName !== "all"
@@ -466,6 +483,9 @@ function getSampleProducts(categoryName, filterName, filterLabel, facetGroups) {
 
         return {
             id: `${categoryName}-${filterName}-${index}`,
+            category: categoryName,
+            filter: filterName,
+            categoryPath: getProductCategoryPath(categoryName, filterName),
             title,
             brand: brands[index % brands.length],
             price: [899, 1299, 1799, 2499][index],
@@ -484,12 +504,14 @@ function renderProductCards(products) {
     grid.innerHTML = products.map(product => `
         <article class="group min-w-0 border-r border-b border-gray-100 p-3 transition-shadow hover:shadow-md sm:p-4">
             <div class="relative mb-3 flex h-48 items-center justify-center overflow-hidden bg-[#f7f8fa] sm:h-60">
-                ${product.image
-            ? `<img data-product-image src="${product.image}" alt="${product.title}" loading="lazy" class="h-full w-full object-contain p-2">`
-            : ""}
-                <span data-image-fallback class="${product.image ? "hidden" : ""} px-3 text-center text-xs text-gray-400">
-                    ${product.image ? `Add image file: ${product.image}` : "Add product image in product data"}
-                </span>
+                <a data-product-detail data-product-id="${product.id}"
+                    href="productdetail.html?id=${encodeURIComponent(product.id)}"
+                    aria-label="View ${product.title}" class="flex h-full w-full items-center justify-center">
+                    ${product.image
+            ? `<img data-product-image src="${product.image}" alt="${product.title}" loading="lazy" class="h-full w-full object-contain p-2">
+                    <span data-image-fallback class="hidden px-3 text-center text-xs text-gray-400">Product image unavailable</span>`
+            : `<span data-image-fallback class="px-3 text-center text-xs text-gray-400">Product image unavailable</span>`}
+                </a>
                 <button type="button" aria-label="Add ${product.title} to wishlist"
                     class="absolute right-2 top-2 text-2xl leading-none text-gray-300 hover:text-red-500">♥</button>
                 <span class="absolute bottom-2 left-2 rounded-sm bg-white px-2 py-1 text-[10px] font-semibold">
@@ -498,7 +520,9 @@ function renderProductCards(products) {
             </div>
             <p class="mb-1 text-[10px] text-gray-400">Sponsored</p>
             <p class="truncate text-[11px] font-semibold text-gray-700">${product.brand}</p>
-            <p class="mt-1 line-clamp-2 min-h-8 text-xs text-gray-800">${product.title}</p>
+            <a data-product-detail data-product-id="${product.id}"
+                href="productdetail.html?id=${encodeURIComponent(product.id)}"
+                class="mt-1 block line-clamp-2 min-h-8 text-xs text-gray-800 hover:text-blue-700">${product.title}</a>
             <div class="mt-2 flex flex-wrap items-center gap-2 text-xs">
                 <span class="font-bold">₹${product.price.toLocaleString("en-IN")}</span>
                 <span class="text-[11px] text-gray-400 line-through">₹${product.originalPrice.toLocaleString("en-IN")}</span>
@@ -515,6 +539,21 @@ function renderProductCards(products) {
             image.classList.add("hidden");
             image.nextElementSibling.classList.remove("hidden");
         }, { once: true });
+    });
+
+    grid.querySelectorAll("[data-product-detail]").forEach(link => {
+        link.addEventListener("click", event => {
+            const product = products.find(item => String(item.id) === link.dataset.productId);
+            if (!product) return;
+
+            try {
+                sessionStorage.setItem("selectedProduct", JSON.stringify(product));
+            } catch (error) {
+                event.preventDefault();
+                console.error("Could not save the selected product for the detail page:", error);
+                window.alert("Could not open product details. Please try again.");
+            }
+        });
     });
 
     emptyState.classList.toggle("hidden", products.length > 0);
